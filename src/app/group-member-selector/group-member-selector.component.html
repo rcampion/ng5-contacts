@@ -1,0 +1,56 @@
+<ng-template [ngIf]="groupMemberSelectionPage != null">
+
+<div id="top" class="row">
+	<div class="col-sm-3">
+		<h2>Contacts</h2>
+	</div>
+	<div class="col-sm-6">
+
+		<div class="input-group h2">
+			<input name="search_input" class="form-control" id="search_input"
+				type="text" placeholder="Search"> <span
+				class="btn btn-primary input-group-btn">
+				<button class="btn btn-success btn-xs glyphicon glyphicon-search"
+					type="button" (click)="search()">Search</button>
+			</span>
+		</div>
+	</div>
+</div>
+
+<hr />
+<div id="list" class="row">
+
+	<div class="table-responsive col-md-12">
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><app-table-sort [table]="self"
+							[page]="groupMemberSelectionPage" [label]="'First Name'"
+							[property]="'firstName'"></app-table-sort></th>
+					<th><app-table-sort [table]="self"
+							[page]="groupMemberSelectionPage" [label]="'Last Name'"
+							[property]="'lastName'"></app-table-sort></th>
+					<th><app-table-sort [table]="self"
+							[page]="groupMemberSelectionPage" [label]="'Company'"
+							[property]="'company'"></app-table-sort></th>
+					<th class="actions">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr *ngFor="let contact of groupMemberSelectionPage.content">
+					<td (click)="add(contact)">{{contact.firstName}}</td>
+					<td (click)="add(contact)">{{contact.lastName}}</td>
+					<td (click)="add(contact)">{{contact.company}}</td>
+					<td class="actions"><a class="btn btn-success btn-xs"
+						(click)="add(contact)">Add</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<app-table-pagination [table]="self" [page]="groupMemberSelectionPage"></app-table-pagination>
+</ng-template>

@@ -1,0 +1,124 @@
+<ng-template [ngIf]="memberPage != null">
+
+<div id="top" class="row">
+	<div class="col-sm-3">
+		<h2>Group Members</h2>
+	</div>
+
+	<div class="col-sm-2">
+		<div class="input-group h2">
+			<span class="btn btn-primary input-group-btn"> <a
+				class="btn btn-success btn-xs glyphicon glyphicon-new-window"
+				(click)="currentGroup=memberPage.groupId" data-toggle="modal"
+				data-target="#add-modal">Add</a>
+			</span>
+		</div>
+	</div>
+
+</div>
+
+<hr />
+<div id="list" class="row">
+
+	<div class="table-responsive col-md-12">
+		<!--       <table class="table table-striped" cellspacing="0" cellpadding="0"> -->
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<!--  
+					<th><table-sort [table]="self" [page]="memberPage"
+							[label]="'First Name'" [property]="'firstName'"></table-sort></th>
+					<th><table-sort [table]="self" [page]="memberPage"
+							[label]="'Last Name'" [property]="'lastName'"></table-sort></th>
+					<th><table-sort [table]="self" [page]="memberPage"
+							[label]="'Company'" [property]="'company'"></table-sort></th>
+					<th class="actions">Actions</th>
+-->
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Company</th>
+					<th class="actions">Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr *ngFor="let member of memberPage.content">
+					<td (click)="show(member)">{{member.firstName}}</td>
+					<td (click)="show(member)">{{member.lastName}}</td>
+					<td (click)="show(member)">{{member.company}}</td>
+					<td class="actions"><a class="btn btn-success btn-xs"
+						(click)="show(member)">Details</a> <a
+						class="btn btn-danger btn-xs" (click)="currentMember=member"
+						data-toggle="modal" data-target="#delete-modal">Delete</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+<app-table-pagination [table]="self" [page]="memberPage"></app-table-pagination>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+	aria-labelledby="modalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="modalLabel">Delete member</h4>
+			</div>
+			<div class="modal-body">Do you want to remove this item ?</div>
+			<div class="modal-footer">
+				<button type="button" (click)="delete(currentMember)"
+					class="btn btn-primary" data-dismiss="modal">Yes</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					data-dismiss="modal">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add-modal" tabindex="-1" role="dialog"
+	aria-labelledby="modalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!--
+				<button type="button" onclick="javascript:window.location.reload()" class="close" data-dismiss="modal"
+					aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				-->
+
+				<button type="button" (click)="update()" class="close"
+					data-dismiss="modal" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="modalLabel">Add Group Member</h4>
+			</div>
+
+			<app-group-member-selector></app-group-member-selector>
+			<!--
+			<div class="modal-footer">
+				<button type="button" onclick="javascript:window.location.reload()" class="btn btn-default" data-dismiss="modal"
+					data-dismiss="modal">Close</button>
+			</div>
+			-->
+
+			<div class="modal-footer">
+				<button type="button" (click)="update()" class="btn btn-default"
+					data-dismiss="modal" data-dismiss="modal">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</ng-template>

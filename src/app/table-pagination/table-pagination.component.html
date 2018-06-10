@@ -1,0 +1,30 @@
+<div id="bottom" class="row">
+	<div class="col-md-12">
+		<ul class="pagination">
+		
+<!--  The href is causing duplicate calls to the server	
+			<li [class.disabled]="page.first"><a href="#"
+				(click)="fetchPreviousPage()">&lt; Previous</a></li>
+ -->					
+			<li [class.disabled]="page.first"><a
+				(click)="fetchPreviousPage()">&lt; Previous</a></li>				
+			<!--  
+            <li *ngFor="#pageIndex of pagesIndexes" [class.disabled]="pageIndex == page.pageNumber+1 "><a (click)="fetchPageNumber(pageIndex)"  >{{pageIndex}}</a></li>
+
+            <li *ngFor="#pageIndex of pagesCount" [class.disabled]="pageIndex == page.pageNumber+1 "><a (click)="fetchPageNumber(pageIndex)"  >{{pageIndex}}</a></li>
+-->
+			<li *ngFor="let pageIndex of pagesIndexes"
+				[class.disabled]="pageIndex == page.number+1 "><a
+				(click)="fetchPageNumber(pageIndex)">{{pageIndex}}</a></li>
+<!--  The href is causing duplicate calls to the server	
+			<li [class.disabled]="page.last" class="next"><a href="#"
+				(click)="fetchNextPage()" rel="next">Next &gt;</a></li>
+-->
+			<li [class.disabled]="page.last" class="next"><a
+				(click)="fetchNextPage()" rel="next">Next &gt;</a></li>
+		</ul>
+		<!-- /.pagination -->
+	</div>
+</div>
+<!-- /#bottom -->
+

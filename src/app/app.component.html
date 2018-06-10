@@ -1,0 +1,30 @@
+<h1>
+	<a href="http://www.zdslogic.com" target="_blank"> <img
+		src="assets/ZdsLogic_Technologies_Small.png"
+		alt="ZdsLogic Technologies">
+	</a>
+</h1>
+
+<nav class="navbar navbar-dark bg-inverse">
+
+	<ul class="nav navbar-nav" routerLinkActive="active">
+		<li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="contacts">Contacts</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="groups">Groups</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="users">Users</a></li>
+<!--  	
+		<li class="nav-item"><a class="nav-link" routerLink="parent">Parent</a></li>
+		<li class="nav-item"><a class="nav-link" routerLink="sibling">Sibling</a></li>
+-->			
+		<li *ngIf="!loginService.isAuthenticated()" class="nav-item"><a
+			class="nav-link" routerLink="login">Login</a></li>
+		<li *ngIf="loginService.isAuthenticated()" class="nav-item"><a
+			class="nav-link" routerLink="logout">Logout</a></li>
+	</ul>
+
+</nav>
+
+<router-outlet></router-outlet>
+
+<app-error></app-error>
