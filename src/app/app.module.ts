@@ -27,6 +27,7 @@ import {SiblingComponent} from './sibling/sibling.component';
 import {IsAuthorizedDirective} from '../app/utils/is-authorized.directive';
 import {TableSortComponent} from './table-sort/table-sort.component';
 import {TablePaginationComponent} from './table-pagination/table-pagination.component';
+
 import {TableElementsCountComponent} from './table-elements-count/table-elements-count.component';
 
 @NgModule({
