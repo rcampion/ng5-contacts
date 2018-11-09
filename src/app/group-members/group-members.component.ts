@@ -26,7 +26,7 @@ export class GroupMembersComponent implements Table<GroupMember> {
   self: GroupMembersComponent;
   pageNumber: number;
   groupId: string;
-  currentMember:GroupMember;
+  currentMember: GroupMember;
 
   @ViewChild(GroupMemberSelectorComponent)
   private groupMemberSelectorComponent: GroupMemberSelectorComponent;
