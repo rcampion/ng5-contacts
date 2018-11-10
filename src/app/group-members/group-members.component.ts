@@ -69,8 +69,7 @@ export class GroupMembersComponent implements Table<GroupMember> {
       return this.fetchPage(this.pageNumber, defaultItemsCountPerPage, null);
     }).subscribe(r => {
       this.fetchPage(this.pageNumber, defaultItemsCountPerPage, null);
+      this.groupMemberSelectorComponent.ngOnInit();
     }, hideLoading, hideLoading);
-
-    this.groupMemberSelectorComponent.update();
   }
 }

@@ -28,8 +28,6 @@ export class GroupMemberSelectorComponent implements Table<GroupMember> {
   groupId: string;
   contactId: string;
 
-
-  //  constructor(private contactService: ContactService, private groupService: GroupService, @Inject(Router) private router: Router, @Inject(GroupMembersComponent) private groupMembersComponent: GroupMembersComponent, private route: ActivatedRoute) {}
   constructor(private contactService: ContactService, private groupService: GroupService, @Inject(Router) private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -80,8 +78,6 @@ export class GroupMemberSelectorComponent implements Table<GroupMember> {
     showLoading();
     observable.subscribe(() => {
     }, hideLoading, hideLoading);
-
-    // this.groupMembersComponent.update();
 
   }
 
