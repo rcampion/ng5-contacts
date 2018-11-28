@@ -1,8 +1,8 @@
 import {Component, OnInit, OnChanges, Input} from '@angular/core';
 import {PaginationPage, PaginationPropertySort} from '../common/pagination';
 import {Table} from '../common/table';
-import {showLoading, hideLoading, doNothing} from "../common/loader";
-import * as Rx from "rxjs/Rx";
+import {showLoading, hideLoading, doNothing} from '../common/loader';
+import * as Rx from 'rxjs/Rx';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class TableSortComponent<T> implements OnChanges {
     @Input() table: Table<any>;
     @Input() page: PaginationPage<T>;
 
-    sortDirection: string = 'ASC';
+    sortDirection = 'ASC';
     sortClass = false;
     sortAscClass = false;
     sortDescClass = false;
@@ -41,7 +41,7 @@ export class TableSortComponent<T> implements OnChanges {
             let sort: PaginationPropertySort;
             sort = {property: this.property, direction: this.sortDirection};
 
-            //const one: PaginationPropertySort = this.page.sort.find(e => e.property === this.property);
+            // const one: PaginationPropertySort = this.page.sort.find(e => e.property === this.property);
 
             let one: PaginationPropertySort;
             one = {property: this.property, direction: this.sortDirection};
@@ -71,7 +71,7 @@ export class TableSortComponent<T> implements OnChanges {
             pageNumber = 0;
         }
 
-        let observable: Rx.Observable<any> = this.table.fetchPage(pageNumber, this.page.size, sort);
+        const observable: Rx.Observable<any> = this.table.fetchPage(pageNumber, this.page.size, sort);
 
         if (observable != null) {
             showLoading();

@@ -1,20 +1,20 @@
 import {Component, OnInit, OnChanges, Input} from '@angular/core';
 import {PaginationPage, PaginationPropertySort} from '../common/pagination';
 import {Table} from '../common/table';
-import {showLoading, hideLoading, doNothing} from "../common/loader";
-import * as Rx from "rxjs/Rx";
+import {showLoading, hideLoading, doNothing} from '../common/loader';
+import * as Rx from 'rxjs/Rx';
 
 @Component({
   selector: 'app-table-pagination',
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.css']
 })
-  
+
 export class TablePaginationComponent<T> {
 
   @Input() table: Table<any>;
   @Input() page: PaginationPage<T>;
-  
+
   get pagesIndexes(): Array<number> {
     const pagesIndexes: Array<number> = [];
     for (let i = 0; i < this.page.totalPages; i++) {
@@ -22,7 +22,6 @@ export class TablePaginationComponent<T> {
     }
     return pagesIndexes;
   }
-  
 
   fetchPageNumber(pageNumber: number) {
     const observable: Rx.Observable<any> = this.table.fetchPage(pageNumber - 1, this.page.size, this.getSort());
