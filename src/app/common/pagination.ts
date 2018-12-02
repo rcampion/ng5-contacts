@@ -4,13 +4,19 @@ export interface PaginationPropertySort {
     property: string;
 }
 
+export interface SpringSort {
+    sorted?: boolean;
+    unsorted?: boolean;
+}
+
 export interface PaginationPage<T> {
-    content? : Array<T>;
+    content?: Array<T>;
     last?: boolean;
     first?: boolean;
     number: number;
     size: number;
-    totalPages? : number;
+    totalPages?: number;
     itemsPerPage?: number;
-    sort?: Array<PaginationPropertySort>;
+    // sort?: Array<PaginationPropertySort>;
+    sort?: SpringSort;
 }

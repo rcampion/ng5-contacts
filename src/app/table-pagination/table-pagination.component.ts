@@ -83,10 +83,13 @@ export class TablePaginationComponent<T> {
   }
 
   private getSort(): PaginationPropertySort {
+    /*
     if (this.page.sort != null && this.page.sort.length > 0) {
       return this.page.sort[0];
     } else {
       return null;
     }
+    */
+   return null;
   }
 }

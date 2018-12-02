@@ -23,7 +23,7 @@ export class ContactListComponent implements Table<Contact> {
   contactPage: any;
   self: ContactListComponent;
   pageNumber: number;
-  currentContact:Contact;
+  currentContact: Contact;
 
   constructor(private contactService: ContactService, @Inject(Router) private router: Router) {
 

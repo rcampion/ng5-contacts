@@ -1,8 +1,8 @@
 import {Component, OnInit, OnChanges, Input} from '@angular/core';
 import {PaginationPage, PaginationPropertySort} from '../common/pagination';
 import {Table} from '../common/table';
-import {showLoading, hideLoading, doNothing} from "../common/loader";
-import * as Rx from "rxjs/Rx";
+import {showLoading, hideLoading, doNothing} from '../common/loader';
+import * as Rx from 'rxjs/Rx';
 
 @Component({
   selector: 'app-table-pagination',
@@ -22,7 +22,7 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
 
   ngOnChanges(changes) {
     if (changes['page']) {
-      let pagesIndexes_: Array<number> = [];
+      const pagesIndexes_: Array<number> = [];
       for (let i = 0; i < this.page.totalPages; i++) {
         pagesIndexes_.push(i + 1);
       }
@@ -31,7 +31,7 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
   }
 
   fetchPageNumber(pageNumer: number) {
-    let observable: Rx.Observable<any> = this.table.fetchPage(pageNumer - 1, this.page.size, this.getSort());
+    const observable: Rx.Observable<any> = this.table.fetchPage(pageNumer - 1, this.page.size, this.getSort());
     if (observable != null) {
       showLoading();
       observable.subscribe(doNothing, hideLoading, hideLoading);
@@ -39,7 +39,7 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
   }
 
   fetchPageSize(pageSize: number) {
-    let observable: Rx.Observable<any> = this.table.fetchPage(this.page.number, pageSize, this.getSort());
+    const observable: Rx.Observable<any> = this.table.fetchPage(this.page.number, pageSize, this.getSort());
     if (observable != null) {
       showLoading();
       observable.subscribe(doNothing, hideLoading, hideLoading);
@@ -54,7 +54,7 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
       return;
     }
 
-    this.fetchPageNumber(pageToFetch +1);
+    this.fetchPageNumber(pageToFetch + 1);
 /*
     let observable: Rx.Observable<any> = this.table.fetchPage(this.page.number + 1, this.page.size, this.getSort());
     if (observable != null) {
@@ -66,11 +66,11 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
   }
 
   fetchPreviousPage() {
-    if (this.page.number == 0) {
+    if (this.page.number === 0) {
       return;
     }
 
-    let observable: Rx.Observable<any> = this.table.fetchPage(this.page.number - 1, this.page.size, this.getSort());
+    const observable: Rx.Observable<any> = this.table.fetchPage(this.page.number - 1, this.page.size, this.getSort());
     if (observable != null) {
       showLoading();
       observable.subscribe(doNothing, hideLoading, hideLoading);
@@ -78,10 +78,13 @@ export class TablePaginationComponent<T> implements OnInit, OnChanges {
   }
 
   private getSort(): PaginationPropertySort {
+    /*
     if (this.page.sort != null && this.page.sort.length > 0) {
       return this.page.sort[0];
     } else {
       return null;
     }
+    */
+   return null;
   }
 }

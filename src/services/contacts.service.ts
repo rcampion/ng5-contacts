@@ -22,6 +22,7 @@ constructor(private httpService: Http) {
       this.httpService
         .get(webServiceEndpoint + '/contact', {search: params})
         .map(res => res.json())
+        .do(data => console.log(data))
         .toPromise()
     ).publish().refCount();
   };
